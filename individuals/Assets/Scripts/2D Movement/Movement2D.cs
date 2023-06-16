@@ -5,8 +5,8 @@ public class Movement2D : MonoBehaviour
     //External Variables
     public float baseSpeed;
     public Rigidbody2D body;
-    public float speedChange = 2f; 
-    public float maxStamina = 15f; 
+    public float speedChange = 2.5f; 
+    public float maxStamina = 20f; 
 
 
     //Internal Variables
@@ -34,24 +34,25 @@ public class Movement2D : MonoBehaviour
             case 1:
                 if (currentStamina > 0)
                 {
-                    speed = baseSpeed*speedChange;
-                    currentStamina -= 1.5f*Time.deltaTime;
+                    speed = (baseSpeed * (((currentStamina/maxStamina)+.5f) * speedChange));
                 }
+                currentStamina -= 2f*Time.deltaTime;
                 break;
             case 2:
                 speed = baseSpeed / speedChange;
                 if (currentStamina < maxStamina)
                 {
-                    currentStamina += 2*Time.deltaTime;
+                    currentStamina += 2*Time.deltaTime ;
                 }
                 break;
             default:
-                speed = baseSpeed; 
+                speed = baseSpeed;
                 if (currentStamina < maxStamina)
                 {
                     currentStamina += Time.deltaTime;
                 }
                 break;
+        
         }
         body.velocity = new Vector2(h * speed, v * speed );
 
