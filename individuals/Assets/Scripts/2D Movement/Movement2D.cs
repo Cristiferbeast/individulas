@@ -26,8 +26,7 @@ public class Movement2D : MonoBehaviour
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Vertical");
 
-        //Crouch and Sprint as well as the Stamina Code.
-        //It doesn't seem like stamina currently works, will see what went wrong in the future
+        //Crouch and Sprint as well as the Stamina Code. This Utalizes a Dynamic Sprint which changes speed based off amount of Stamina left
         int input = SprintInput();
         switch (input)
         {
