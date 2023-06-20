@@ -16,41 +16,49 @@ public class NPCMovement : MonoBehaviour
     private Vector3 targetPosition;
     private bool walkingForward = true;
     private bool isFlipped;
+    private int beserkmeter = 0; 
+
+    
 
     private void Start()
     {
-        if (aggresion == "readied" || "passive" || "hostile" || "beserk"){
-            startPosition = transform.position;
-            targetPosition = startPosition + Vector3.left * walkingDistance;
+        if(aggresion == "beserk"){
+            beserkmeter = 10;
         }
+        startPosition = transform.position;
+        targetPosition = startPosition + Vector3.left * walkingDistance;
     }
 
     private void Update()
     {
         float distance = Vector3.Distance(transform.position, playerTransform.position);
-        if (aggresion == "readied"){
-            //This Code Handles Normal Walk Patterns
-            StandardWalk();
-            aggresion = Detection(distance, detectionRange);
-        }
-        if (aggresion == "passive"){
-            //This Code is For Units that are Passive
-            StandardWalk();
-        }
-        if (aggresion == "hostile"){
-            //This Code When Aggresion Occurs
-            Chase(1);
-            aggresion = Detection(distance, detectionRange);
-        }
-        if (aggresion == "beserk"){
-            Chase(2);
-            aggresion = Detection(distance, detectionRange * 2);
+        switch (aggresion)
+        {
+            case "readied":
+                aggresion = Detection(distance, detectionRange);
+                StandardWalk();
+                break;
+            case "passive":
+                StandardWalk();
+                break;
+            case "hostile":
+                Chase(1);
+                aggresion = Detection(distance, detectionRange);
+                break;
+            case "berserk":
+                for (int i = 0; i < beserkmeter; i++)
+                {
+                Chase(2);
+                }
+                aggresion = Detection(distance, detectionRange * 2);
+                break;
+            default:
+            break;
         }
 
     }
 
     //Internal Functions
-
     void Chase(int anger){
         Vector3 direction = (playerTransform.position - transform.position).normalized;
         transform.position += direction * speed * anger * Time.deltaTime;
