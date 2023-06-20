@@ -27,7 +27,6 @@ public class Movement2D : MonoBehaviour
         v = Input.GetAxisRaw("Vertical");
 
         //Crouch and Sprint as well as the Stamina Code.
-        //It doesn't seem like stamina currently works, will see what went wrong in the future
         int input = SprintInput();
         switch (input)
         {
