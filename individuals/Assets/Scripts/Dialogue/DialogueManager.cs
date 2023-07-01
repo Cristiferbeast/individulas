@@ -3,10 +3,11 @@ using UnityEngine;
 public class DialogueManager : MonoBehaviour
 {
     public GameObject dialogueUI;
+    public bool constantstate = false;
 
     private void Start()
     {
-        dialogueUI.SetActive(false);
+        dialogueUI.SetActive(constantstate);
     }
 
     public void OpenDialogue()

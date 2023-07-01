@@ -1,22 +1,22 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class DialogueController : MonoBehaviour
 {
-    //External Variables
+    // External Variables
+    public TextMeshProUGUI speakerText;
     public TextMeshProUGUI dialogueText;
     public Dialogue[] dialogues;
     public DialogueManager dialogueManager;
 
-    //Internal Variables
+    // Internal Variables
     private int currentDialogueIndex = 0;
     private int currentLineIndex = 0;
     private bool inDialogue = false;
 
     private void Start()
     {
-        dialogueText.text = dialogues[currentDialogueIndex].lines[currentLineIndex];
+        DisplayCurrentLine();
     }
 
     private void Update()
@@ -31,34 +31,43 @@ public class DialogueController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            StartDialogue(0); 
+            StartDialogue(0);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") && Input.GetKey(KeyCode.X))
+        if (other.CompareTag("Player"))
         {
-            // Disable dialogue when the player exits the trigger area
-            dialogueManager.CloseDialogue();
+            CloseDialogue();
         }
     }
 
-    //Internal Functions
+    // Internal Functions
     private void LoadNextLine()
     {
-        if (currentLineIndex < dialogues[currentDialogueIndex].lines.Length - 1)
+        Dialogue currentDialogue = dialogues[currentDialogueIndex];
+        if (currentLineIndex < currentDialogue.dialogueLines.Length - 1)
         {
-            // Advance to the next line
             currentLineIndex++;
-            dialogueText.text = dialogues[currentDialogueIndex].lines[currentLineIndex];
+            DisplayCurrentLine();
         }
         else
         {
-            // End of dialogue, close the dialogue UI
-            dialogueManager.CloseDialogue();
-            inDialogue = false;
+            CloseDialogue();
         }
+    }
+
+    private void DisplayCurrentLine()
+    {
+        Dialogue currentDialogue = dialogues[currentDialogueIndex];
+        DialogueLine currentLine = currentDialogue.dialogueLines[currentLineIndex];
+
+        speakerText.text = currentLine.speaker;
+        dialogueText.text = currentLine.line;
+
+        dialogueManager.OpenDialogue();
+        inDialogue = true;
     }
 
     public void StartDialogue(int dialogueIndex)
@@ -67,9 +76,13 @@ public class DialogueController : MonoBehaviour
         {
             currentDialogueIndex = dialogueIndex;
             currentLineIndex = 0;
-            dialogueText.text = dialogues[currentDialogueIndex].lines[currentLineIndex];
-            dialogueManager.OpenDialogue();
-            inDialogue = true;
+            DisplayCurrentLine();
         }
+    }
+
+    private void CloseDialogue()
+    {
+        dialogueManager.CloseDialogue();
+        inDialogue = false;
     }
 }
