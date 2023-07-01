@@ -266,6 +266,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1018233021 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3633184885006429394, guid: b5ea67d0e01ab854386aec33ba199c67, type: 3}
+  m_PrefabInstance: {fileID: 3006832687909544400}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1048721845
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,7 +286,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1048721846}
-  - component: {fileID: 1048721847}
   m_Layer: 0
   m_Name: The Soapias
   m_TagString: Untagged
@@ -300,22 +310,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1048721847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1048721845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38ab321b93f0d8c4aadec01fad10f61e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueText: {fileID: 1217071537}
-  dialogues:
-  - {fileID: 11400000, guid: 4476de64e7dfd7f4ab9659ce572115d5, type: 2}
-  dialogueManager: {fileID: 1520239570}
 --- !u!1 &1050538105
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,6 +378,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1126345502 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2651710503163365000, guid: da0325b5d2bc1934eb4e4b7bc3e6f218, type: 3}
+  m_PrefabInstance: {fileID: 2651710502516936434}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1126345507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126345502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ab321b93f0d8c4aadec01fad10f61e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speakerText: {fileID: 1018233021}
+  dialogueText: {fileID: 1217071537}
+  dialogues:
+  - {fileID: 11400000, guid: 4476de64e7dfd7f4ab9659ce572115d5, type: 2}
+  dialogueManager: {fileID: 1520239570}
 --- !u!114 &1217071537 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3313195633891242572, guid: b5ea67d0e01ab854386aec33ba199c67, type: 3}
@@ -425,6 +441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueUI: {fileID: 1973976501}
+  constantstate: 1
 --- !u!4 &1520239571
 Transform:
   m_ObjectHideFlags: 0
@@ -599,9 +616,9 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 2382663794325759450, guid: b5ea67d0e01ab854386aec33ba199c67, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 7.9515915
+    - target: {fileID: 3633184885006429394, guid: b5ea67d0e01ab854386aec33ba199c67, type: 3}
+      propertyPath: m_text
+      value: Speaker
       objectReference: {fileID: 0}
     - target: {fileID: 5127431226792913388, guid: b5ea67d0e01ab854386aec33ba199c67, type: 3}
       propertyPath: m_Pivot.x
