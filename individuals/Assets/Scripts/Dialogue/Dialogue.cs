@@ -5,6 +5,7 @@ public class DialogueLine
 {
     public string speaker;
     public string line;
+    public string[] options;
 }
 
 [CreateAssetMenu(fileName = "New Dialogue", menuName = "Dialogue")]
