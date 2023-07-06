@@ -400,6 +400,8 @@ MonoBehaviour:
   dialogues:
   - {fileID: 11400000, guid: 4476de64e7dfd7f4ab9659ce572115d5, type: 2}
   dialogueManager: {fileID: 1520239570}
+  optionsContainer: {fileID: 0}
+  optionButtonPrefab: {fileID: 0}
 --- !u!114 &1217071537 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3313195633891242572, guid: b5ea67d0e01ab854386aec33ba199c67, type: 3}
@@ -725,6 +727,10 @@ PrefabInstance:
       propertyPath: inventoryUI
       value: 
       objectReference: {fileID: 1824142637}
+    - target: {fileID: 4332878500698695868, guid: 79499a1cf7c946845843d0dca9a6a85f, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4332878500698695870, guid: 79499a1cf7c946845843d0dca9a6a85f, type: 3}
       propertyPath: m_RootOrder
       value: 2

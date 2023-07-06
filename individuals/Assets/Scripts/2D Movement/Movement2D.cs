@@ -34,14 +34,16 @@ public class Movement2D : MonoBehaviour
                 if (currentStamina > 0)
                 {
                     speed = (baseSpeed * (((currentStamina/maxStamina)+.5f) * speedChange));
+                    currentStamina -= 2f*Time.deltaTime;
+                    currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
                 }
-                currentStamina -= 2f*Time.deltaTime;
                 break;
             case 2:
                 speed = baseSpeed / speedChange;
                 if (currentStamina < maxStamina)
                 {
                     currentStamina += 2*Time.deltaTime ;
+                    currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
                 }
                 break;
             default:
@@ -49,11 +51,11 @@ public class Movement2D : MonoBehaviour
                 if (currentStamina < maxStamina)
                 {
                     currentStamina += Time.deltaTime;
+                    currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
                 }
                 break;
         
         }
-        body.velocity = new Vector2(h * speed, v * speed );
 
         //Directional Character Facing 
         if (h > 0 && !isFlipped)
