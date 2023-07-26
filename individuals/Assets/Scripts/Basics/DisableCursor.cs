@@ -1,12 +1,19 @@
-void Start(){
-    Cursor.visible=false;
-    Cursor.lockState= CursorLockMode.Locked;
-}
+using UnityEngine;
 
-void Update(){
-    if (Input.GetKeyDown(KeyCode.Escape))
+public class CursorController : MonoBehaviour
+{
+    void Start()
     {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 }
